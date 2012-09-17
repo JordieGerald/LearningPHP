@@ -1,6 +1,10 @@
 <?php
 
-    $url = $_GET['url']; // this doesn't seem to work on EasyPHP... =\
-    
-    echo $url;
+// use an autoloader
+require 'libs/bootstrap.php';
+require 'libs/controller.php';
+require 'libs/model.php';
+require 'libs/view.php';
+
+$app = new Bootstrap();
 ?>

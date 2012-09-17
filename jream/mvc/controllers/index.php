@@ -1,8 +1,9 @@
 <?php
-class ClassName {
+class Index extends Controller {
 
     function __construct() {
-        echo 'We are in index';
+        parent::__construct();
+        echo 'We are in index<br />';
     }
 
 }
