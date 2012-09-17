@@ -23,8 +23,8 @@ class View {
         // so a page is seen as active
         
         // get rid of the slashs at the far right of the url
-        // TODO: relative linking won't work when you go deeper into the directories. Fix this
         $name = explode('/', rtrim($name, '/'));
+        $url = URL;
         
         require 'views/navigation_begin.php';
         
@@ -33,19 +33,27 @@ class View {
         } else {
             echo "<li>";
         }
-        echo "<a href='index'>Home</a></li>";
+        echo "<a href='";
+        echo $url;
+        echo "index'>Home</a></li>";
+        
         if ($name[0] == "help") {
             echo "<li class='active'>";
         } else {
             echo "<li>";
         }
-        echo "<a href='help'>Help</a></li>";
+        echo "<a href='";
+        echo $url;
+        echo "help'>Help</a></li>";
+        
         if ($name[0] == "login") {
             echo "<li class='active'>";
         } else {
             echo "<li>";
         }
-        echo "<a href='login'>Login</a></li>";
+        echo "<a href='";
+        echo $url;
+        echo "login'>Login</a></li>";
         
         require 'views/navigation_end.php';
     }

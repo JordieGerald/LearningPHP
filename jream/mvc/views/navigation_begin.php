@@ -7,6 +7,6 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-                    <a class="brand" href="index">Create Your Own MVC</a>
+                    <a class="brand" href="<?php echo URL; ?>index">Create Your Own MVC</a>
                     <div class="nav-collapse collapse">
                         <ul class="nav">
