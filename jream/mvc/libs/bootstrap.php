@@ -3,12 +3,23 @@
 class Bootstrap {
 
     function __construct() {
-        $url = $_GET['url'];
-        $url = rtrim($url, '/'); // get rid of the slashs at the far right of the url
+        // to load the default page without errors
+        $url = isset($_GET['url']) ? $_GET['url'] : null;
+        
+        // get rid of the slashs at the far right of the url
+        $url = rtrim($url, '/');
+        
         $url = explode('/', $url);
-        ;
-
-        // print_r($url); // debugging purposes
+        
+        // for debugging purposes
+        //print_r($url);
+        
+        // to load the default page if 'index' is not explicitly in the url
+        if (empty($url[0])) {
+            require 'controllers/index.php';
+            $controller = new Index();
+            return false; // so the rest of the code below won't execute
+        }
         
         $file = 'controllers/' . $url[0] . '.php';
         
@@ -17,7 +28,7 @@ class Bootstrap {
         } else {
             require 'controllers/error.php';
             $controller = new Error();
-            return false; // "stop doing stuff" lol
+            return false; // so the rest of the code below won't execute
         }
         $controller = new $url[0];
 
