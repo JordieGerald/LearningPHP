@@ -8,7 +8,7 @@
               padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
             }
         </style>
-        <!-- v relative linking won't work when you go deeper into the directories. Fix this later v -->
+        <!-- TODO: relative linking won't work when you go deeper into the directories. Fix this -->
         <link rel="stylesheet" href="public/css/bootstrap.min.css" />
         <script type="text/javascript" src="public/js/jquery.js"></script>
         <script type="text/javascript" src="public/js/custom.js"></script>

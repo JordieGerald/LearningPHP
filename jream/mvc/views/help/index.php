@@ -1,1 +1,1 @@
-<p>This is the help</p>
+<p>This is the help.</p>
