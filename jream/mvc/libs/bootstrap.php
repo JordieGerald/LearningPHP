@@ -18,6 +18,7 @@ class Bootstrap {
         if (empty($url[0])) {
             require 'controllers/index.php';
             $controller = new Index();
+            $controller->index();
             return false; // so the rest of the code below won't execute
         }
         
@@ -26,19 +27,38 @@ class Bootstrap {
         if (file_exists($file)) {
             require $file;
         } else {
-            require 'controllers/error.php';
-            $controller = new Error();
-            return false; // so the rest of the code below won't execute
+            $this->error();
         }
         $controller = new $url[0];
-
+        
+        // calling methods 
+        // BUG: Fatal error if one tries to load a page that isn't index, 
+        // help or login
         if (isset($url[2])) {
-            $controller->{$url[1]}($url[2]);
-        } else if (isset($url[1])) {
-            $controller->{$url[1]}();
+            if (method_exists($controller, $url[1])) {
+                $controller->{$url[1]}($url[2]);
+            } else {
+                $this->error();
+            }
+        } else {
+            if (isset($url[1])) {
+                if (method_exists($controller, $url[1])) {
+                    $controller->{$url[1]}();
+                } else {
+                    $this->error();
+                }
+            } else {
+                $controller->index();
+            }
         }
     }
-
+    
+    function error() {
+        require 'controllers/error.php';
+        $controller = new Error();
+        $controller->index();
+        return false;
+    }
 }
 
 ?>
