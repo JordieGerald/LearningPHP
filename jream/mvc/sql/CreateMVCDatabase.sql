@@ -19,6 +19,6 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 -- Data for table `users`
 --
-
+-- came up with the password by using php's md5 function, and parsed 'jenny', e.g. echo md5('jenny');
 INSERT INTO `users` (`id`, `username`, `password`) VALUES
 (1, 'jenny', 'ebe6941ee8a10c14dc933ae37a0f43fc');
