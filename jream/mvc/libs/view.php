@@ -46,15 +46,29 @@ class View {
         echo $url;
         echo "help'>Help</a></li>";
         
-        if ($name[0] == "login") {
-            echo "<li class='active'>";
+        if (Session::get('loggedIn') == true) {
+            if ($name[0] == "dashboard") {
+                echo "<li class='active'>";
+            } else {
+                echo "<li>";
+            }
+            echo "<a href='";
+            echo $url;
+            echo "dashboard'>Dashboard</a></li>";
+            
+            echo "<li><a href='";
+            echo $url;
+            echo "dashboard/logout'>Logout</a></li>";
         } else {
-            echo "<li>";
-        }
-        echo "<a href='";
-        echo $url;
-        echo "login'>Login</a></li>";
-        
+            if ($name[0] == "login") {
+                echo "<li class='active'>";
+            } else {
+                echo "<li>";
+            }
+            echo "<a href='";
+            echo $url;
+            echo "login'>Login</a></li>";
+        }        
         require 'views/navigation_end.php';
     }
 

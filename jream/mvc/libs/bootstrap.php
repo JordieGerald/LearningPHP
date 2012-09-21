@@ -30,6 +30,7 @@ class Bootstrap {
             $this->error();
         }
         $controller = new $url[0];
+        $controller->loadModel($url[0]);
         
         // calling methods 
         // BUG: Fatal error if one tries to load a page that isn't index, 

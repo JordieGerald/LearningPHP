@@ -3,7 +3,8 @@
 class Model {
 
     function __construct() {
-        // $this->database = new Database();
+        // we have the database reusable in every model this way
+        $this->db = new Database();
     }
 
 }
